@@ -7,8 +7,8 @@ class HeaderBanner extends StatelessWidget {
 
   const HeaderBanner({
     super.key,
-    this.studentName = 'Mahasiswa TRPL',
-    this.nim = '362355401xxx',
+    this.studentName = 'Nurin Albait',
+    this.nim = '362558302005',
   });
 
   @override
@@ -37,38 +37,57 @@ class HeaderBanner extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.2),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: const Text(
-                  'Semester 5 (2026/2027)',
-                  style: TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.w600),
+              Flexible(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: const Text(
+                    'Semester 5 (2026/2027)',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                 ),
               ),
-              const Icon(Icons.notifications_active_outlined, color: Colors.white, size: 20),
+              const SizedBox(width: 8),
+              const Icon(
+                Icons.notifications_active_outlined,
+                color: Colors.white,
+                size: 20,
+              ),
             ],
           ),
           const SizedBox(height: 14),
           Text(
             'Selamat Datang, $studentName ($nim)',
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: const TextStyle(color: Colors.white70, fontSize: 13),
           ),
           const SizedBox(height: 4),
           const Text(
             'Dashboard Akademik & Proyek',
-            style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           const SizedBox(height: 16),
-          // Ringkasan status akademik
-          const Row(
+          // Wrap mencegah overflow pada layar sempit atau font besar.
+          const Wrap(
+            spacing: 8,
+            runSpacing: 8,
             children: [
               _StatPill(icon: Icons.task_alt, label: '4 Matakuliah'),
-              SizedBox(width: 8),
               _StatPill(icon: Icons.grade, label: 'IPK 3.85'),
-              SizedBox(width: 8),
               _StatPill(icon: Icons.calendar_month, label: '100% Hadir'),
             ],
           ),
@@ -98,7 +117,18 @@ class _StatPill extends StatelessWidget {
         children: [
           Icon(icon, size: 14, color: Colors.white),
           const SizedBox(width: 4),
-          Text(label, style: const TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.w500)),
+          Flexible(
+            child: Text(
+              label,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 11,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
         ],
       ),
     );
