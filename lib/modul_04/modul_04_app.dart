@@ -7,17 +7,11 @@ class Modul04App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProviderScope(
+    return const ProviderScope(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Networking & REST API — Poliwangi',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color(0xFF0284C7),
-          ),
-          useMaterial3: true,
-        ),
-        home: const AnnouncementListScreen(),
+        home: AnnouncementListScreen(),
       ),
     );
   }
